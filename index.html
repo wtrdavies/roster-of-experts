@@ -4,58 +4,116 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roster of Experts</title>
+    <!-- Load Open Sans font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Global styles */
         body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-            padding: 20px;
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
             background-color: #f4f4f4;
+        }
+
+        /* Header section */
+        .header {
+            background-color: #0057B7; /* UNDP Blue */
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            position: relative;
+        }
+
+        /* Logo */
+        .logo {
+            position: absolute;
+            left: 20px;
+            top: 10px;
+            height: 50px;
+        }
+
+        /* Main content container */
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
-        .container {
-            max-width: 600px;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
+
         h1 {
-            color: #333;
+            color: #0057B7;
+            font-size: 26px;
+            font-weight: 700;
         }
+
         p {
             font-size: 16px;
-            color: #555;
+            color: #333;
+            line-height: 1.6;
+            font-weight: 400;
         }
+
+        /* Button styles */
         .button {
             display: inline-block;
+            margin: 15px 10px;
             padding: 12px 20px;
-            margin: 10px;
             font-size: 16px;
+            font-weight: 600;
             color: white;
-            background: #0078D4;
-            text-decoration: none;
+            background: #0057B7;
+            border: none;
             border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s ease-in-out;
         }
+
         .button:hover {
-            background: #005A9E;
+            background: #003d82; /* Darker blue */
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            font-size: 14px;
+            padding: 10px;
+            margin-top: 20px;
+            color: #666;
         }
     </style>
 </head>
 <body>
 
+    <div class="header">
+        <img src="https://yourgithubrepo.com/path-to-your-logo.png" class="logo" alt="Roster Logo">
+        Roster of Experts
+    </div>
+
     <div class="container">
-        <h1>Roster of Experts</h1>
+        <h1>Join the Roster</h1>
         <p>
-            This roster compiles a list of experts in <b>climate adaptation</b>.
-            If you wish to be considered, please complete the survey.  
+            The Roster of Experts compiles a list of specialists in <b>climate adaptation</b>.  
+            If you wish to be considered, please complete the survey below.  
             The latest version of the roster is available for download.
         </p>
 
-        <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=vHVmC8ygz0qVTwkqV-oT6iB6ZxZUSz9HuCUg7wfNY5FUQlRKVTg2SjNJUTc3UDJSOTFKVFBQVElRSC4u" class="button" target="_blank">Fill Out the Survey</a>
+        <a href="https://forms.office.com/your-survey-link" class="button" target="_blank">📋 Fill Out the Survey</a>
         <br>
-        <a href="https://ricardogroup-my.sharepoint.com/:x:/g/personal/william_davies_ricardo_com/EaTxrf7kPDFKt4PmDLR-89ABhwObk8QTl1TpLY5fp4DsUQ?e=InplNX" class="button" target="_blank">Download Latest Roster</a>
+        <a href="https://your-sharepoint-or-onedrive-link?download=1" class="button">⬇️ Download Latest Roster</a>
     </div>
+
+    <div class="footer">
+        © 2025 Roster of Experts | Powered by [Your Organization]
+    </div>
+
+</body>
+</html>
+
 
 </body>
 </html>
