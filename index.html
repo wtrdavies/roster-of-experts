@@ -24,14 +24,13 @@
         }
 
         .logo {
-            max-width: 120px; /* Reduced logo size */
+            max-width: 100px; /* Smaller logo */
             display: block;
             margin: 0 auto 10px auto; /* Center logo */
         }
 
         h1 {
             font-size: 24px;
-            font-weight: bold;
             margin: 10px 0;
         }
 
@@ -43,21 +42,36 @@
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
+            text-align: left;
         }
 
         p {
             font-size: 16px;
             color: #333;
             line-height: 1.6;
+            font-weight: normal; /* Remove bold text */
+        }
+
+        h2, h3 {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* Bullet points aligned to the left */
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
         }
 
         /* Buttons */
         .button {
-            display: inline-block;
-            width: 80%;
-            margin: 10px auto;
-            padding: 12px 20px;
+            display: block;
+            width: 250px; /* Reduce button width */
+            margin: 15px auto;
+            padding: 12px;
             font-size: 16px;
             font-weight: 600;
             color: white;
@@ -66,10 +80,11 @@
             border-radius: 5px;
             text-decoration: none;
             transition: background 0.3s ease-in-out;
+            text-align: center;
         }
 
         .button:hover {
-            background: #09471E; /* Even darker green for hover */
+            background: #09471E; /* Darker green on hover */
         }
 
         /* Footer */
@@ -86,45 +101,43 @@
 
     <!-- Header Section -->
     <div class="header">
-        <img src="your-logo.png" class="logo" alt="Lebanon Climate Adaptation Roster of Experts">
+        <img src="https://raw.githubusercontent.com/yourusername/yourrepo/main/yourimage.png" class="logo" alt="Roster of Experts">
         <h1>Roster of Experts</h1>
     </div>
 
     <!-- Main Content -->
-  <div class="container">
-    <h2>About the Roster of Experts</h2>
-    <p>
-        Lebanon faces significant climate challenges, requiring locally driven adaptation strategies 
-        to protect communities, ecosystems, and key economic sectors. The <strong>Lebanon Climate Adaptation 
-        Roster of Experts</strong> serves as a centralized resource, connecting qualified professionals 
-        with organizations, policymakers, and project teams working on climate resilience.
-    </p>
+    <div class="container">
+        <h2>About the Roster of Experts</h2>
+        <p>
+            Lebanon faces significant climate challenges, requiring locally driven adaptation strategies 
+            to protect communities, ecosystems, and key economic sectors. The Lebanon Climate Adaptation 
+            Roster of Experts serves as a centralized resource, connecting qualified professionals 
+            with organizations, policymakers, and project teams working on climate resilience.
+        </p>
 
-    <p>
-        By leveraging national expertise in areas such as <strong>water management, agriculture, 
-        renewable energy, and environmental policy</strong>, the roster facilitates 
-        <strong>rapid mobilization of specialists</strong>, enhances <strong>capacity-building efforts</strong>, 
-        and strengthens <strong>local ownership of adaptation initiatives</strong>.
-    </p>
+        <p>
+            By leveraging national expertise in areas such as water management, agriculture, 
+            renewable energy, and environmental policy, the roster facilitates 
+            rapid mobilization of specialists, enhances capacity-building efforts, 
+            and strengthens local ownership of adaptation initiatives.
+        </p>
 
-    <h3>What You Can Do on This Page</h3>
-    <ul>
-        <li><strong>Apply to Join the Roster</strong> by completing the survey.</li>
-        <li><strong>Download the Latest Roster</strong> of experts available for consultation and collaboration.</li>
-    </ul>
+        <h3>What You Can Do on This Page</h3>
+        <ul>
+            <li>Apply to Join the Roster by completing the survey.</li>
+            <li>Download the Latest Roster of experts available for consultation and collaboration.</li>
+        </ul>
 
-    <p>
-        This initiative ensures that adaptation projects in Lebanon benefit from local knowledge, 
-        innovative solutions, and targeted technical expertise, driving <strong>effective and sustainable 
-        climate action</strong>.
-    </p>
-</div>
-        <!-- Survey Button -->
-        <a href="https://forms.office.com/YOUR_FORM_LINK" class="button"> Apply to the Roster of Experts</a>
-
-        <!-- Download Button -->
-        <a href="https://your-download-link.com" class="button"> Download Latest Roster of Experts</a>
+        <p>
+            This initiative ensures that adaptation projects in Lebanon benefit from local knowledge, 
+            innovative solutions, and targeted technical expertise, driving effective and sustainable 
+            climate action.
+        </p>
     </div>
+
+    <!-- Buttons -->
+    <a href="https://forms.office.com/YOUR_FORM_LINK" class="button">Apply to the Roster of Experts</a>
+    <a href="https://raw.githubusercontent.com/yourusername/yourrepo/main/yourfile.xlsx" class="button" download>Download Latest Roster of Experts</a>
 
     <!-- Footer -->
     <div class="footer">
