@@ -4,79 +4,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roster of Experts</title>
-    <!-- Load Open Sans font from Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-       body {
-    font-family: 'Open Sans', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #C7D8C6; /* Light green background */
-}
+        /* General styles */
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #C7D8C6; /* Light green background */
+            text-align: center;
+        }
 
-.container {
-    max-width: 800px;
-    margin: 50px auto;
-    background: white;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-}
+        /* Header section */
+        .header {
+            background: #0F5E28; /* Dark green header */
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
 
-.header {
-    background: #0F5E28; /* Dark green header */
-    color: white;
-    padding: 20px;
-    text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-    border-radius: 8px 8px 0 0;
-}
+        .logo {
+            max-width: 120px; /* Reduced logo size */
+            display: block;
+            margin: 0 auto 10px auto; /* Center logo */
+        }
 
-p {
-    font-size: 16px;
-    color: #333;
-    line-height: 1.6;
-}
+        h1 {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
 
-.button {
-    display: inline-block;
-    margin: 10px;
-    padding: 12px 20px;
-    font-size: 16px;
-    font-weight: 600;
-    color: white;
-    background: #0F5E28; /* Dark green */
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background 0.3s ease-in-out;
-}
+        /* Main container */
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
 
-.button:hover {
-    background: #09471E; /* Even darker green for hover */
-}
+        p {
+            font-size: 16px;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Buttons */
+        .button {
+            display: inline-block;
+            width: 80%;
+            margin: 10px auto;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+            background: #0F5E28; /* Dark green */
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .button:hover {
+            background: #09471E; /* Even darker green for hover */
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            font-size: 14px;
+            color: #555;
+            padding: 10px;
+            margin-top: 50px;
+        }
     </style>
 </head>
 <body>
 
+    <!-- Header Section -->
     <div class="header">
-        <img src="https://raw.githubusercontent.com/wtrdavies/roster-of-experts/main/2025_02_06_09_54_03_Window.png" class="logo" alt="Roster Logo">
-        Roster of Experts
+        <img src="your-logo.png" class="logo" alt="Roster of Experts">
+        <h1>Roster of Experts</h1>
     </div>
 
+    <!-- Main Content -->
     <div class="container">
-        <h1>Join the Roster</h1>
-        <p>
-            The Roster of Experts compiles a list of specialists in <b>climate adaptation</b>.  
-            If you wish to be considered, please complete the survey below.  
-            The latest version of the roster is available for download.
-        </p>
+        <h2>Join the Roster</h2>
+        <p>The Roster of Experts compiles a list of specialists in <strong>climate adaptation</strong>. If you wish to be considered, please complete the survey below. The latest version of the roster is available for download.</p>
 
-        <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=vHVmC8ygz0qVTwkqV-oT6mWlQKZZeB1LnPjV4qsP7FtUNVZHS0lNNVVOUTZXS0lGM0paOE9FNzg4TC4u" class="button" target="_blank">📋 Fill Out the Survey</a>
-        <br>
-        <a href="https://ricardogroup-my.sharepoint.com/:x:/g/personal/charis_evans_ricardo_com/EYmiJ6BwRgdFn4DWbuAREeABM6cC2trUJVbM-P-oz0Mzyg?e=IslGcQ&ovuser=0b6675bc-a0cc-4acf-954f-092a57ea13ea%2CWilliam.Davies%40ricardo.com&clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiI0OS8yNTAxMDYyMDQxMiIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3D%3D" class="button">⬇️ Download Latest Roster</a>
+        <!-- Survey Button -->
+        <a href="https://forms.office.com/YOUR_FORM_LINK" class="button">📋 Fill Out the Survey</a>
+
+        <!-- Download Button -->
+        <a href="https://your-download-link.com" class="button">⬇️ Download Latest Roster</a>
     </div>
+
+    <!-- Footer -->
     <div class="footer">
         © 2025 Roster of Experts | Powered by Pikarddo
     </div>
