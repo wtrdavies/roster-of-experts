@@ -136,12 +136,13 @@
       
     </div>
 
-    <h2 style="text-align:center; margin-top: 40px;">Roster of Experts</h2>
-
 <div style="width: 100%; overflow-x: auto; padding: 20px;">
-  <table id="expertTable" class="display nowrap" style="width: 100%;">
+  <input type="text" id="globalSearch" placeholder="Search entire table..." style="width: 300px; padding: 10px; font-size: 16px; margin-bottom: 15px; display: block;">
+  
+  <table id="expertTable" class="display nowrap" style="width:100%">
     <thead>
       <tr>
+        <th>Name</th>
         <th>Age Group</th>
         <th>Gender</th>
         <th>Nationality</th>
@@ -173,7 +174,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
+     <tr>
     <td>25-34</td>
     <td>Female</td>
     <td>I am Lebanese</td>
@@ -242,22 +243,16 @@
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
-<!-- Styling + DataTables Initialization -->
+<!-- Styling + DataTables Init -->
 <style>
   table.dataTable th, table.dataTable td {
     border: 1px solid #ccc;
     padding: 8px;
     background-color: #fff;
     vertical-align: top;
-    word-wrap: break-word;
     white-space: normal;
-  }
-
-  .dataTables_wrapper {
-    margin-top: 20px;
-    background-color: #ffffff;
-    padding: 10px;
-    border-radius: 8px;
+    word-break: break-word;
+    max-width: 250px;
   }
 
   thead input {
@@ -270,11 +265,18 @@
   table.dataTable thead {
     background-color: #f1f1f1;
   }
+
+  .dataTables_wrapper {
+    margin-top: 20px;
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 8px;
+  }
 </style>
 
 <script>
   $(document).ready(function () {
-    // Clone header row for filter inputs
+    // Clone header row for individual filters
     $('#expertTable thead tr').clone(true).appendTo('#expertTable thead');
     $('#expertTable thead tr:eq(1) th').each(function (i) {
       $(this).html('<input type="text" placeholder="Filter..." style="width: 100%;" />');
@@ -285,13 +287,18 @@
       });
     });
 
-    $('#expertTable').DataTable({
+    var table = $('#expertTable').DataTable({
       scrollX: true,
       scrollY: '500px',
       scrollCollapse: true,
       paging: true,
       orderCellsTop: true,
       fixedHeader: true
+    });
+
+    // Global search
+    $('#globalSearch').on('keyup', function () {
+      table.search(this.value).draw();
     });
   });
 </script>
