@@ -134,48 +134,46 @@
             climate action.
         </p>
       
-<!-- Roster Table -->
-<h2>Roster of Experts</h2>
+    </div>
 
-<h2>Roster of Experts</h2>
+    <h2 style="text-align:center; margin-top: 40px;">Roster of Experts</h2>
 
-<div style="overflow-x: auto;">
-  <table id="expertTable" class="display" style="width:100%">
+<div style="width: 100%; overflow-x: auto; padding: 20px;">
+  <table id="expertTable" class="display nowrap" style="width: 100%;">
     <thead>
-  <tr>
-    <th>Age Group</th>
-    <th>Gender</th>
-    <th>Nationality</th>
-    <th>Country of Residence</th>
-    <th>Education</th>
-    <th>Languages</th>
-    <th>Primary Affiliation</th>
-    <th>Company/Organization</th>
-    <th>Current Professional Role/Title</th>
-    <th>Years of Experience</th>
-    <th>Relevant Assignments</th>
-    <th>Publications</th>
-    <th>Biography</th>
-    <th>Adaptation Sectors</th>
-    <th>Water (sub-sectors)</th>
-    <th>Agriculture (sub-sectors)</th>
-    <th>Forestry (sub-sectors)</th>
-    <th>Biodiversity (sub-sectors)</th>
-    <th>Disaster Risk Reduction</th>
-    <th>Resilient Cities</th>
-    <th>Climate Resilient Health</th>
-    <th>Cross-Sector</th>
-    <th>Geographical Expertise</th>
-    <th>Local (scope)</th>
-    <th>Regional (scope)</th>
-    <th>International (scope)</th>
-    <th>Climate Adaptation Experience</th>
-    <th>Tools & Software Skills</th>
-  </tr>
-</thead>
-
+      <tr>
+        <th>Age Group</th>
+        <th>Gender</th>
+        <th>Nationality</th>
+        <th>Country of Residence</th>
+        <th>Education</th>
+        <th>Languages</th>
+        <th>Primary Affiliation</th>
+        <th>Company/Organization</th>
+        <th>Current Professional Role/Title</th>
+        <th>Years of Experience</th>
+        <th>Relevant Assignments</th>
+        <th>Publications</th>
+        <th>Biography</th>
+        <th>Adaptation Sectors</th>
+        <th>Water (sub-sectors)</th>
+        <th>Agriculture (sub-sectors)</th>
+        <th>Forestry (sub-sectors)</th>
+        <th>Biodiversity (sub-sectors)</th>
+        <th>Disaster Risk Reduction</th>
+        <th>Resilient Cities</th>
+        <th>Climate Resilient Health</th>
+        <th>Cross-Sector</th>
+        <th>Geographical Expertise</th>
+        <th>Local (scope)</th>
+        <th>Regional (scope)</th>
+        <th>International (scope)</th>
+        <th>Climate Adaptation Experience</th>
+        <th>Tools & Software Skills</th>
+      </tr>
+    </thead>
     <tbody>
-     <tr>
+      <tr>
     <td>25-34</td>
     <td>Female</td>
     <td>I am Lebanese</td>
@@ -246,8 +244,7 @@
 
 <!-- Styling + DataTables Initialization -->
 <style>
-  table.dataTable th,
-  table.dataTable td {
+  table.dataTable th, table.dataTable td {
     border: 1px solid #ccc;
     padding: 8px;
     background-color: #fff;
@@ -259,9 +256,8 @@
   .dataTables_wrapper {
     margin-top: 20px;
     background-color: #ffffff;
-    padding: 15px;
+    padding: 10px;
     border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
   }
 
   thead input {
@@ -272,16 +268,16 @@
   }
 
   table.dataTable thead {
-    background-color: #e8f0e8;
+    background-color: #f1f1f1;
   }
 </style>
 
 <script>
   $(document).ready(function () {
-    // Create input fields in header
+    // Clone header row for filter inputs
     $('#expertTable thead tr').clone(true).appendTo('#expertTable thead');
     $('#expertTable thead tr:eq(1) th').each(function (i) {
-      $(this).html('<input type="text" placeholder="Filter..." style="width:100%"/>');
+      $(this).html('<input type="text" placeholder="Filter..." style="width: 100%;" />');
       $('input', this).on('keyup change', function () {
         if ($('#expertTable').DataTable().column(i).search() !== this.value) {
           $('#expertTable').DataTable().column(i).search(this.value).draw();
@@ -289,18 +285,16 @@
       });
     });
 
-    // Initialize table
     $('#expertTable').DataTable({
-      orderCellsTop: true,
-      fixedHeader: true,
       scrollX: true,
-      pageLength: 10
+      scrollY: '500px',
+      scrollCollapse: true,
+      paging: true,
+      orderCellsTop: true,
+      fixedHeader: true
     });
   });
 </script>
-
-
-    </div>
 
     <!-- Buttons -->
     <a href="https://forms.office.com/pages/responsepage.aspx?id=vHVmC8ygz0qVTwkqV-oT6mWlQKZZeB1LnPjV4qsP7FtUNVZHS0lNNVVOUTZXS0lGM0paOE9FNzg4TC4u&route=shorturl" class="button">Apply to the Roster of Experts</a>
