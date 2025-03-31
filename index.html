@@ -137,9 +137,12 @@
 <!-- Roster Table -->
 <h2>Roster of Experts</h2>
 
-<table id="expertTable" class="display nowrap" style="width:100%">
-  <thead>
-    <tr>
+<h2>Roster of Experts</h2>
+
+<div style="overflow-x: auto;">
+  <table id="expertTable" class="display" style="width:100%">
+    <thead>
+      <tr>
       <th>Name</th>
       <th>Age Group</th>
       <th>Gender</th>
@@ -205,8 +208,8 @@
       <th>Tools & Software Skills</th>
     </tr>
   </tfoot>
-  <tbody>
-    <tr>
+    <tbody>
+     <tr>
     <td>25-34</td>
     <td>Female</td>
     <td>I am Lebanese</td>
@@ -266,37 +269,68 @@
     <td>Innovation & Technology, Project Implementation, Partnerships & Collaboration</td>
     <td>GIS, HEC-RAS (Flood Risk Modeling), SAP2000 (Structural Risk Assessment)</td>
   </tr>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>
 
 <!-- DataTables Scripts -->
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
-<!-- Initialize DataTables with column filters and horizontal scroll -->
+<!-- Styling + DataTables Initialization -->
+<style>
+  table.dataTable th,
+  table.dataTable td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    background-color: #fff;
+    vertical-align: top;
+    word-wrap: break-word;
+    white-space: normal;
+  }
+
+  .dataTables_wrapper {
+    margin-top: 20px;
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+  }
+
+  thead input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 6px;
+    font-size: 14px;
+  }
+
+  table.dataTable thead {
+    background-color: #e8f0e8;
+  }
+</style>
+
 <script>
-$(document).ready(function () {
-  // Setup column filter inputs
-  $('#expertTable tfoot th').each(function () {
-    var title = $(this).text();
-    $(this).html('<input type="text" placeholder="Filter ' + title + '" style="width: 100%;" />');
-  });
+  $(document).ready(function () {
+    // Create input fields in header
+    $('#expertTable thead tr').clone(true).appendTo('#expertTable thead');
+    $('#expertTable thead tr:eq(1) th').each(function (i) {
+      $(this).html('<input type="text" placeholder="Filter..." style="width:100%"/>');
+      $('input', this).on('keyup change', function () {
+        if ($('#expertTable').DataTable().column(i).search() !== this.value) {
+          $('#expertTable').DataTable().column(i).search(this.value).draw();
+        }
+      });
+    });
 
-  var table = $('#expertTable').DataTable({
-    scrollX: true
-  });
-
-  // Apply filters
-  table.columns().every(function () {
-    var that = this;
-    $('input', this.footer()).on('keyup change clear', function () {
-      if (that.search() !== this.value) {
-        that.search(this.value).draw();
-      }
+    // Initialize table
+    $('#expertTable').DataTable({
+      orderCellsTop: true,
+      fixedHeader: true,
+      scrollX: true,
+      pageLength: 10
     });
   });
-});
 </script>
 
 
