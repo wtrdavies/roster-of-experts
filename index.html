@@ -133,6 +133,58 @@
             innovative solutions, and targeted technical expertise, driving effective and sustainable 
             climate action.
         </p>
+        <h2>Roster Preview</h2>
+
+<input type="text" id="searchInput" placeholder="Search experts..." onkeyup="filterTable()" style="width: 100%; padding: 10px; margin-bottom: 15px; font-size: 16px;">
+
+<table class="table" style="width: 100%; border-collapse: collapse; font-size: 15px;">
+  <thead style="background-color: #f4f4f4;">
+    <tr>
+      <th style="border: 1px solid #ccc; padding: 8px;">Name</th>
+      <th style="border: 1px solid #ccc; padding: 8px;">Age Group</th>
+      <th style="border: 1px solid #ccc; padding: 8px;">Gender</th>
+      <th style="border: 1px solid #ccc; padding: 8px;">Nationality</th>
+      <th style="border: 1px solid #ccc; padding: 8px;">Country of Residence</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #ccc; padding: 8px;">Place Holder</td>
+      <td style="border: 1px solid #ccc; padding: 8px;">35+</td>
+      <td style="border: 1px solid #ccc; padding: 8px;">Male</td>
+      <td style="border: 1px solid #ccc; padding: 8px;">I am Lebanese</td>
+      <td style="border: 1px solid #ccc; padding: 8px;">Lebanon</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #ccc; padding: 8px;">Temporary Name</td>
+      <td style="border: 1px solid #ccc; padding: 8px;">25-34</td>
+      <td style="border: 1px solid #ccc; padding: 8px;">Female</td>
+      <td style="border: 1px solid #ccc; padding: 8px;">I am Lebanese</td>
+      <td style="border: 1px solid #ccc; padding: 8px;">Lebanon</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #ccc; padding: 8px;">Person Example</td>
+      <td style="border: 1px solid #ccc; padding: 8px;">25-35</td>
+      <td style="border: 1px solid #ccc; padding: 8px;">Male</td>
+      <td style="border: 1px solid #ccc; padding: 8px;">I am not Lebanese</td>
+      <td style="border: 1px solid #ccc; padding: 8px;">Japan</td>
+    </tr>
+  </tbody>
+</table>
+
+<script>
+function filterTable() {
+  const input = document.getElementById("searchInput");
+  const filter = input.value.toLowerCase();
+  const rows = document.querySelectorAll(".table tbody tr");
+
+  rows.forEach(row => {
+    const text = row.textContent.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+}
+</script>
+
     </div>
 
     <!-- Buttons -->
