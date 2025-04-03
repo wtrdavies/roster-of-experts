@@ -133,18 +133,17 @@
             innovative solutions, and targeted technical expertise, driving effective and sustainable 
             climate action.
         </p>
-   <!-- Roster Table Container -->
-<div style="width: 75%; margin: 0 auto; overflow-x: auto; padding: 20px;">
+ <div style="width: 90%; margin: 0 auto; overflow-x: auto; padding: 20px;">
 
   <table id="expertTable" class="unfccc-table" style="width: 100%;">
     <thead>
       <tr>
-        <th>Expert</th>
-        <th>Current Professional Role/Title</th>
-        <th>Years of Experience</th>
-        <th>Adaptation Sectors</th>
-        <th>Local (scope)</th>
-        <th>Biography</th>
+        <th style="width: 12%;">Expert</th>
+        <th style="width: 20%;">Current Professional Role/Title</th>
+        <th style="width: 10%;">Years of Experience</th>
+        <th style="width: 20%;">Adaptation Sectors</th>
+        <th style="width: 18%;">Local (scope)</th>
+        <th style="width: 30%;">Biography</th>
       </tr>
     </thead>
     <tbody>
@@ -209,11 +208,6 @@
   </table>
 </div>
 
-<!-- DataTables Scripts for Filtering -->
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-
 <!-- UNFCCC-style Table Styling -->
 <style>
   .unfccc-table {
@@ -221,17 +215,14 @@
     width: 100%;
     font-family: Arial, sans-serif;
     font-size: 14px;
-  }
-
-  .unfccc-table thead {
-    background-color: #dcefe0;
+    table-layout: fixed;
   }
 
   .unfccc-table th {
+    background-color: #dcefe0;
     padding: 10px;
     text-align: left;
     border-bottom: 2px solid #ccc;
-    white-space: nowrap;
   }
 
   .unfccc-table td {
@@ -239,47 +230,14 @@
     vertical-align: top;
     border-bottom: 1px solid #e0e0e0;
     background-color: #ffffff;
-    word-break: break-word;
     white-space: pre-wrap;
+    word-wrap: break-word;
   }
 
   .unfccc-table tr:nth-child(even) td {
     background-color: #f9f9f9;
   }
-
-  thead input {
-    width: 100%;
-    padding: 6px;
-    box-sizing: border-box;
-    font-size: 13px;
-    border: 1px solid #ccc;
-  }
 </style>
-
-<script>
-  $(document).ready(function () {
-    // Add filter inputs to header
-    $('#expertTable thead tr').clone(true).appendTo('#expertTable thead');
-    $('#expertTable thead tr:eq(1) th').each(function (i) {
-      $(this).html('<input type="text" placeholder="Filter..." />');
-      $('input', this).on('keyup change', function () {
-        if ($('#expertTable').DataTable().column(i).search() !== this.value) {
-          $('#expertTable').DataTable().column(i).search(this.value).draw();
-        }
-      });
-    });
-
-    // Initialize DataTable
-    $('#expertTable').DataTable({
-      paging: false,
-      scrollX: true,
-      scrollY: '400px',
-      scrollCollapse: true,
-      orderCellsTop: true,
-      fixedHeader: true
-    });
-  });
-</script>
 
     <!-- Buttons -->
     <a href="https://forms.office.com/pages/responsepage.aspx?id=vHVmC8ygz0qVTwkqV-oT6mWlQKZZeB1LnPjV4qsP7FtUNVZHS0lNNVVOUTZXS0lGM0paOE9FNzg4TC4u&route=shorturl" class="button">Apply to the Roster of Experts</a>
