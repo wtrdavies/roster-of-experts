@@ -211,7 +211,7 @@
   }
 
   .dataTables_wrapper .dataTables_filter {
-    display: none; /* Hide global search bar */
+    display: none;
   }
 </style>
 
@@ -275,7 +275,9 @@
       scrollCollapse: true,
       orderCellsTop: true,
       fixedHeader: true,
-      scrollX: true
+      scrollX: true,
+      autoWidth: false,
+      columnDefs: [{ targets: '_all', width: 'auto' }]
     });
   });
 </script>
