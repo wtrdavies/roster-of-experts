@@ -1,180 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lebanon Climate Adaptation Roster of Experts</title>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* General styles */
-        body {
-            font-family: 'Open Sans', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #C7D8C6; /* Light green background */
-            text-align: center;
-        }
-
-        /* Header section */
-        .header {
-            background: #0F5E28; /* Dark green header */
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .logo {
-            max-width: 100px; /* Smaller logo */
-            display: block;
-            margin: 0 auto 10px auto; /* Center logo */
-        }
-
-        h1 {
-            font-size: 24px;
-            margin: 10px 0;
-        }
-
-        /* Main container */
-        .container {
-            max-width: 600px;
-            margin: 50px auto;
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-            text-align: left;
-        }
-
-        p {
-            font-size: 16px;
-            color: #333;
-            line-height: 1.6;
-            font-weight: normal; /* Remove bold text */
-        }
-
-        h2, h3 {
-            text-align: center;
-            font-weight: bold;
-        }
-
-        /* Bullet points aligned to the left */
-        ul {
-            padding-left: 20px;
-        }
-
-        li {
-            margin-bottom: 10px;
-        }
-
-        /* Buttons */
-        .button {
-            display: block;
-            width: 250px; /* Reduce button width */
-            margin: 15px auto;
-            padding: 12px;
-            font-size: 16px;
-            font-weight: 600;
-            color: white;
-            background: #0F5E28; /* Dark green */
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: background 0.3s ease-in-out;
-            text-align: center;
-        }
-
-        .button:hover {
-            background: #09471E; /* Darker green on hover */
-        }
-
-        /* Footer */
-        .footer {
-            text-align: center;
-            font-size: 14px;
-            color: #555;
-            padding: 10px;
-            margin-top: 50px;
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Header Section -->
-    <div class="header">
-        <img src="https://raw.githubusercontent.com/wtrdavies/roster-of-experts/main/Lebanon%20MoE.png" class="logo" alt="Lebanon Climate Adaptation Roster of Experts">
-        <h1>Lebanon Climate Adaptation Roster of Experts</h1>
-    </div>
-
-    <!-- Main Content -->
-    <div class="container">
-        <h2>About the Roster of Experts</h2>
-        <p>
-            Lebanon faces significant climate challenges, requiring locally driven adaptation strategies 
-            to protect communities, ecosystems, and key economic sectors. The Lebanon Climate Adaptation 
-            Roster of Experts serves as a centralized resource, connecting qualified professionals 
-            with organizations, policymakers, and project teams working on climate resilience.
-        </p>
-
-        <p>
-            By leveraging national expertise in areas such as water management, agriculture, 
-            renewable energy, and environmental policy, the roster facilitates 
-            rapid mobilization of specialists, enhances capacity-building efforts, 
-            and strengthens local ownership of adaptation initiatives.
-        </p>
-
-        <p>
-            This initiative ensures that adaptation projects in Lebanon benefit from local knowledge, 
-            innovative solutions, and targeted technical expertise, driving effective and sustainable 
-            climate action.
-        </p>
-
-<html lang="en">
-<head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lebanon Climate Adaptation Roster of Experts</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-  
-
-<style>
-  td:nth-child(1) { width: 8% !important; }
-  td:nth-child(2) { width: 15% !important; }
-  td:nth-child(3) { width: 8% !important; }
-  td:nth-child(4) { max-width: 200px; white-space: pre-wrap !important; word-wrap: break-word !important; overflow-wrap: break-word !important; }
-  td:nth-child(5) { max-width: 220px; white-space: pre-wrap !important; word-wrap: break-word !important; overflow-wrap: break-word !important; }
-  td:nth-child(6) { max-width: 500px !important; white-space: pre-wrap !important; word-wrap: break-word !important; overflow-wrap: break-word !important; }
-  .dataTables_wrapper .dataTables_filter {
-    display: none;
-  }
-
-  td:nth-child(5) {
-    white-space: pre-wrap !important;
-    word-wrap: break-word !important;
-    overflow-wrap: break-word !important;
-    max-width: 250px;
-  }
-
-  td:nth-child(1) { width: 10%; }
-  td:nth-child(2) { width: 18%; }
-  td:nth-child(3) { width: 10%; }
-  td:nth-child(6) { max-width: 400px; }
-
+  <style>
     body {
-      background-color: #d2e1d1;
-      font-family: Arial, sans-serif;
+      font-family: 'Open Sans', sans-serif;
       margin: 0;
       padding: 0;
+      background-color: #C7D8C6;
     }
-    .container {
-      max-width: 90%;
+    .header {
+      background: #0F5E28;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .logo {
+      max-width: 100px;
+      display: block;
+      margin: 0 auto 10px auto;
+    }
+    h1 {
+      font-size: 24px;
+      margin: 10px 0;
+    }
+    .main-content {
+      display: flex;
+      gap: 20px;
+      max-width: 1200px;
       margin: 30px auto;
-      background-color: #fff;
+      background: white;
       padding: 30px;
       border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
     }
-    h2 {
-      text-align: center;
+    .filters {
+      width: 260px;
+      background: #f2f2f2;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    .filters h3 {
       margin-top: 0;
+    }
+    .filters label {
+      display: block;
+      margin-bottom: 8px;
+    }
+    .table-container {
+      flex: 1;
     }
     .unfccc-table {
       border-collapse: collapse;
@@ -192,47 +70,117 @@
       padding: 10px;
       vertical-align: top;
       border-bottom: 1px solid #e0e0e0;
+      background-color: #ffffff;
       white-space: pre-wrap;
       word-break: break-word;
-      background-color: #ffffff;
     }
     .unfccc-table tr:nth-child(even) td {
       background-color: #f9f9f9;
     }
-    thead input {
+    .button {
+      display: block;
+      width: 250px;
+      margin: 15px auto;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      color: white;
+      background: #0F5E28;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      text-align: center;
+    }
+    .button:hover {
+      background: #09471E;
+    }
+    .footer {
+      text-align: center;
+      font-size: 14px;
+      color: #555;
+      padding: 10px;
+      margin-top: 50px;
+    }
+    input[type="text"] {
       width: 100%;
-      padding: 5px;
-      font-size: 13px;
-      box-sizing: border-box;
+      padding: 6px;
+      margin-bottom: 10px;
     }
   </style>
 </head>
 <body>
+  <div class="header">
+    <img src="https://raw.githubusercontent.com/wtrdavies/roster-of-experts/main/Lebanon%20MoE.png" class="logo" alt="Lebanon Climate Adaptation Roster of Experts">
+    <h1>Lebanon Climate Adaptation Roster of Experts</h1>
+  </div>
 
-<div style="max-width: 1100px; margin: 0 auto;">
-  <iframe
-    src=" https://ricardogroup.sharepoint.com/:x:/s/ED19696/ETfUgr2EaSBOvDJ8BYrl7fsBXIRddjmBjYbW6s2GfIxvhw?e=L71N0b "
-    width="100%"
-    height="700px"
-    frameborder="0"
-    scrolling="yes">
-  </iframe>
-</div>
-
-</body>
-</html>
-
-    <!-- Buttons -->
-    <a href="https://forms.office.com/pages/responsepage.aspx?id=vHVmC8ygz0qVTwkqV-oT6mWlQKZZeB1LnPjV4qsP7FtUNVZHS0lNNVVOUTZXS0lGM0paOE9FNzg4TC4u&route=shorturl" class="button">Apply to the Roster of Experts</a>
-   <a href="https://ricardogroup.sharepoint.com/:x:/s/ED19696/EaAn1GUxrfZMg2-IoB0jpXYBztBoPFacPrSfoXgQoZwqBw?e=A3QmFB" class="button" target="_blank"> View Latest Roster of Experts</a>
-
-
-
-
-    <!-- Footer -->
-    <div class="footer">
-        © 2025 Lebanon Climate Adaptation Roster of Experts
+  <div class="main-content">
+    <!-- Filter Sidebar -->
+    <div class="filters">
+      <h3>🔍 Search</h3>
+      <input type="text" id="globalSearch" placeholder="Search...">
+      <h3>📅 Years of Experience</h3>
+      <label><input type="checkbox" class="exp-filter" value="5-10 yrs"> 5–10 yrs</label>
+      <label><input type="checkbox" class="exp-filter" value="11-20 yrs"> 11–20 yrs</label>
+      <label><input type="checkbox" class="exp-filter" value="20+ yrs"> 20+ yrs</label>
+      <!-- Adaptation Sectors can go here as needed -->
     </div>
 
+    <!-- Table Content -->
+    <div class="table-container">
+      <table id="expertTable" class="display nowrap unfccc-table">
+        <thead>
+          <tr>
+            <th>Expert</th>
+            <th>Current Professional Role/Title</th>
+            <th>Years of Experience</th>
+            <th>Adaptation Sectors</th>
+            <th>Geography</th>
+            <th>Biography</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Data Rows Go Here -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Action Buttons -->
+  <a href="https://forms.office.com/pages/responsepage.aspx?id=vHVmC8ygz0qVTwkqV-oT6mWlQKZZeB1LnPjV4qsP7FtUNVZHS0lNNVVOUTZXS0lGM0paOE9FNzg4TC4u&route=shorturl" class="button">Apply to the Roster of Experts</a>
+  <a href="https://ricardogroup.sharepoint.com/:x:/s/ED19696/EaAn1GUxrfZMg2-IoB0jpXYBztBoPFacPrSfoXgQoZwqBw?e=A3QmFB" class="button" target="_blank">View Latest Roster of Experts</a>
+
+  <!-- Footer -->
+  <div class="footer">
+    © 2025 Lebanon Climate Adaptation Roster of Experts
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      var table = $('#expertTable').DataTable({
+        paging: false,
+        scrollCollapse: true,
+        orderCellsTop: true,
+        fixedHeader: true,
+        scrollX: true,
+        autoWidth: false
+      });
+
+      // Global Search
+      $('#globalSearch').on('keyup', function () {
+        table.search(this.value).draw();
+      });
+
+      // Experience Filter
+      $('.exp-filter').on('change', function () {
+        const selected = $('.exp-filter:checked').map((_, el) => el.value).get();
+        table.column(2).search(selected.join('|'), true, false).draw();
+      });
+    });
+  </script>
 </body>
 </html>
+
