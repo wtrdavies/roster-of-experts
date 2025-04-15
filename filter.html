@@ -379,18 +379,8 @@
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 <script>
   $(document).ready(function () {
-    // Add header filters
-    $('#expertTable thead tr').clone(true).appendTo('#expertTable thead');
-    $('#expertTable thead tr:eq(1) th').each(function (i) {
-      $(this).html('<input type="text" placeholder="Filter..." />');
-      $('input', this).on('keyup change', function () {
-        if ($('#expertTable').DataTable().column(i).search() !== this.value) {
-          $('#expertTable').DataTable().column(i).search(this.value).draw();
-        }
-      });
-    });
-
-    $('#expertTable').DataTable({
+    // Initialize DataTable
+    const table = $('#expertTable').DataTable({
       paging: false,
       scrollCollapse: true,
       orderCellsTop: true,
@@ -399,17 +389,33 @@
       autoWidth: false,
       columnDefs: [{ targets: '_all', width: 'auto' }]
     });
-   $('#applyFilters').on('click', function () {
-  // Global search
-  var global = $('#globalSearch').val();
-  table.search(global).draw();
 
-  // Experience
-  const exp = $('.exp-filter:checked').map((_, el) => el.value).get();
-  table.column(2).search(exp.join('|'), true, false).draw();
+    // Add header filters
+    $('#expertTable thead tr').clone(true).appendTo('#expertTable thead');
+    $('#expertTable thead tr:eq(1) th').each(function (i) {
+      $(this).html('<input type="text" placeholder="Filter..." />');
+      $('input', this).on('keyup change', function () {
+        if (table.column(i).search() !== this.value) {
+          table.column(i).search(this.value).draw();
+        }
+      });
+    });
 
-  // Sectors
-  const sectors = $('.sector-filter:checked').map((_, el) => el.value).get();
-  table.column(3).search(sectors.join('|'), true, false).draw();
-});
+    // Global search box
+    $('#globalSearch').on('keyup', function () {
+      table.search(this.value).draw();
+    });
+
+    // Apply Filters button
+    $('#applyFilters').on('click', function () {
+      // Years of Experience filter (Column 2)
+      const exp = $('.exp-filter:checked').map((_, el) => el.value).get();
+      table.column(2).search(exp.join('|'), true, false).draw();
+
+      // Adaptation Sectors filter (Column 3)
+      const sectors = $('.sector-filter:checked').map((_, el) => el.value).get();
+      table.column(3).search(sectors.join('|'), true, false).draw();
+    });
+  });
+</script>
   });
