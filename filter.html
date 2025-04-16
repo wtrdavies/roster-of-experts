@@ -260,15 +260,15 @@
 
   <!-- SIDEBAR FILTERS -->
 <div id="filters" style="width: 250px; background: #f2f2f2; padding: 20px; border-radius: 8px; font-family: 'Open Sans', sans-serif;">
-  <h3 style="font-weight: normal;">🔍 Search</h3>
+  <h3 style="font-weight: normal;"> Search</h3>
   <input type="text" id="globalSearch" placeholder="Search..." style="width: 100%; padding: 6px; margin-bottom: 20px;">
 
-  <h3 style="font-weight: normal;">📅 Years of Experience</h3>
+  <h3 style="font-weight: normal;"> Years of Experience</h3>
   <label style="font-weight: normal;"><input type="checkbox" class="exp-filter" value="5-10 yrs"> 5–10 yrs</label><br>
   <label style="font-weight: normal;"><input type="checkbox" class="exp-filter" value="11-20 yrs"> 11–20 yrs</label><br>
   <label style="font-weight: normal;"><input type="checkbox" class="exp-filter" value="20+ yrs"> 20+ yrs</label>
 
-  <h3 style="margin-top: 20px; font-weight: normal;">🌿 Adaptation Sectors</h3>
+  <h3 style="margin-top: 20px; font-weight: normal;"> Adaptation Sectors</h3>
 
   <!-- Each group has a heading and sub-options -->
   <div class="sector-group">
@@ -350,7 +350,7 @@
       <tr>
         <td>Placeholder1 name</td>
         <td>Senior Climate Adaptation Specialist</td>
-        <td>10-20 yrs</td>
+        <td>11-20 yrs</td>
         <td>Water: Wastewater, Irrigation<br>Agriculture: Crops<br>Forestry: Forest Management<br>Cross-Sector: Policy and Governance, Economic/Financial Assessments</td>
         <td>Domestic: Beirut, Mount Lebanon<br>Regional: Iran, Iraq, Morocco<br>International: Italy, Japan</td>
         <td>Placeholder1 name is a climate adaptation specialist with over 15 years of experience in policy analysis, project implementation, and research. His work focuses on water security, urban resilience, and climate-smart agriculture in the MENA region. He has contributed to multiple UN-led initiatives and published extensively on adaptation strategies.</td>
@@ -411,11 +411,17 @@
       // Years of Experience filter (Column 2)
       const exp = $('.exp-filter:checked').map((_, el) => el.value).get();
       table.column(2).search(exp.join('|'), true, false).draw();
-
+        
+ //  Clear filters
+    $('#clearFilters').on('click', function () {
+      $('#globalSearch').val('');
+      $('.exp-filter, .sector-filter').prop('checked', false);
+      table.search('').columns().search('').draw();
+    });
+        
       // Adaptation Sectors filter (Column 3)
       const sectors = $('.sector-filter:checked').map((_, el) => el.value).get();
       table.column(3).search(sectors.join('|'), true, false).draw();
     });
   });
 </script>
-  });
