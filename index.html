@@ -39,6 +39,31 @@
       margin: 10px 0;
     }
 
+    p {
+      font-size: 16px;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .button {
+      display: block;
+      width: 250px;
+      margin: 20px auto;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      color: white;
+      background: #0F5E28;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    .button:hover {
+      background: #09471E;
+    }
+
     table.dataTable td {
       white-space: pre-wrap;
       word-break: break-word;
@@ -72,6 +97,29 @@
 </div>
 
 <div class="container">
+  <h2>About the Roster of Experts</h2>
+  <p>
+    Lebanon faces significant climate challenges, requiring locally driven adaptation strategies
+    to protect communities, ecosystems, and key economic sectors. The Lebanon Climate Adaptation
+    Roster of Experts serves as a centralized resource, connecting qualified professionals
+    with organizations, policymakers, and project teams working on climate resilience.
+  </p>
+  <p>
+    By leveraging national expertise in areas such as water management, agriculture,
+    renewable energy, and environmental policy, the roster facilitates
+    rapid mobilization of specialists, enhances capacity-building efforts,
+    and strengthens local ownership of adaptation initiatives.
+  </p>
+  <p>
+    This initiative ensures that adaptation projects in Lebanon benefit from local knowledge,
+    innovative solutions, and targeted technical expertise, driving effective and sustainable
+    climate action.
+  </p>
+
+  <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=vHVmC8ygz0qVTwkqV-oT6iB6ZxZUSz9HuCUg7wfNY5FUM0UxQ085UlpITlVGUE9aT0FRT1I4TTEyRS4u" class="button">
+    Apply to the Roster of Experts
+  </a>
+
   <h2 style="text-align:center;">Public Roster of Experts</h2>
 
   <table id="expertTable" class="display nowrap" style="width:100%">
@@ -100,7 +148,6 @@
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 <script>
   $(document).ready(function () {
-    // Add search inputs to each column
     $('#expertTable thead tr').clone(true).appendTo('#expertTable thead');
     $('#expertTable thead tr:eq(1) th').each(function (i) {
       $(this).html('<input type="text" placeholder="Filter..." />');
