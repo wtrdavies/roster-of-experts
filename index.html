@@ -6,6 +6,7 @@
   <title>Lebanon Climate Adaptation Roster of Experts</title>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+
   <style>
     body {
       font-family: 'Open Sans', sans-serif;
@@ -26,30 +27,27 @@
       margin-bottom: 10px;
     }
 
-    .container {
-      max-width: 95%;
+    .content {
+      max-width: 800px;
       margin: 30px auto;
       background: white;
       padding: 30px;
       border-radius: 8px;
       box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
     }
 
-    h1, h2 {
-      margin: 10px 0;
-    }
-
-    p {
+    .content p {
+      text-align: justify;
       font-size: 16px;
       color: #333;
       line-height: 1.6;
     }
 
     .button {
-      display: block;
-      width: 250px;
-      margin: 20px auto;
-      padding: 12px;
+      display: inline-block;
+      margin: 20px 0;
+      padding: 12px 24px;
       font-size: 16px;
       font-weight: 600;
       color: white;
@@ -64,18 +62,20 @@
       background: #09471E;
     }
 
-    table.dataTable td {
-      white-space: pre-wrap;
-      word-break: break-word;
-      vertical-align: top;
+    .table-container {
+      max-width: 95%;
+      margin: 40px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     }
 
-    .footer {
-      text-align: center;
-      font-size: 14px;
-      color: #555;
-      padding: 10px;
-      margin-top: 50px;
+    table.dataTable td {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      vertical-align: top;
     }
 
     th, td {
@@ -87,6 +87,48 @@
       padding: 4px;
       box-sizing: border-box;
     }
+
+    /* Column widths */
+    td:nth-child(1) { max-width: 180px; }
+    td:nth-child(2) { max-width: 180px; }
+    td:nth-child(3) { max-width: 100px; }
+    td:nth-child(4) { max-width: 200px; }
+    td:nth-child(5) { max-width: 250px; }
+    td:nth-child(6) { max-width: 250px; }
+    td:nth-child(7) { max-width: 220px; }
+    td:nth-child(8) { max-width: 200px; }
+    td:nth-child(9) { max-width: 350px; }
+
+    .footer {
+      text-align: center;
+      font-size: 14px;
+      color: #555;
+      padding: 10px;
+      margin-top: 50px;
+    }
+
+    .clear-filters-btn {
+      background-color: #0F5E28;
+      color: white;
+      padding: 8px 16px;
+      font-size: 14px;
+      font-weight: bold;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-left: 20px;
+    }
+
+    .clear-filters-btn:hover {
+      background-color: #09471E;
+    }
+
+    .search-container {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
@@ -96,8 +138,7 @@
   <h1>Lebanon Climate Adaptation Roster of Experts</h1>
 </div>
 
-<div class="container">
-  <h2>About the Roster of Experts</h2>
+<div class="content">
   <p>
     Lebanon faces significant climate challenges, requiring locally driven adaptation strategies
     to protect communities, ecosystems, and key economic sectors. The Lebanon Climate Adaptation
@@ -119,8 +160,16 @@
   <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=vHVmC8ygz0qVTwkqV-oT6iB6ZxZUSz9HuCUg7wfNY5FUM0UxQ085UlpITlVGUE9aT0FRT1I4TTEyRS4u" class="button">
     Apply to the Roster of Experts
   </a>
+</div>
 
+<div class="table-container">
   <h2 style="text-align:center;">Public Roster of Experts</h2>
+
+  <div class="search-container">
+    <label for="globalSearch">Search:</label>
+    <input type="text" id="globalSearch" placeholder="Search table..." />
+    <button class="clear-filters-btn" onclick="clearFilters()">Clear Filters</button>
+  </div>
 
   <table id="expertTable" class="display nowrap" style="width:100%">
     <thead>
@@ -147,6 +196,14 @@
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 <script>
+  let dataTableInstance;
+
+  function clearFilters() {
+    $('#expertTable').DataTable().search('').columns().search('').draw();
+    $('#expertTable thead tr:eq(1) input').val('');
+    $('#globalSearch').val('');
+  }
+
   $(document).ready(function () {
     $('#expertTable thead tr').clone(true).appendTo('#expertTable thead');
     $('#expertTable thead tr:eq(1) th').each(function (i) {
@@ -161,7 +218,7 @@
     fetch('https://wtrdavies.github.io/roster-of-experts/data/roster.json')
       .then(response => response.json())
       .then(data => {
-        $('#expertTable').DataTable({
+        dataTableInstance = $('#expertTable').DataTable({
           data: data,
           columns: [
             { data: 'Expert Name / Email' },
@@ -180,6 +237,10 @@
           fixedHeader: true,
           scrollX: true,
           autoWidth: false
+        });
+
+        $('#globalSearch').on('keyup', function () {
+          dataTableInstance.search(this.value).draw();
         });
       });
   });
