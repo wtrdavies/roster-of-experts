@@ -76,7 +76,7 @@
       table-layout: fixed;
     }
 
-    th, td {
+    td, th {
       word-break: break-word;
       white-space: normal;
       vertical-align: top;
@@ -225,7 +225,14 @@
     fetch('https://wtrdavies.github.io/roster-of-experts/data/roster.json')
       .then(response => response.json())
       .then(data => {
-        ['Adaptation Sub-sectors', 'Geographic Scope', 'Type of Expertise', 'Technical Skills'].forEach(key => {
+        // Insert <br> for specific multi-value fields
+        const multilineFields = [
+          'Adaptation Sub-sectors',
+          'Geographic Scope',
+          'Type of Expertise',
+          'Technical Skills'
+        ];
+        multilineFields.forEach(key => {
           data.forEach(item => {
             if (item[key]) {
               item[key] = item[key].replace(/;\s*/g, "<br>");
@@ -240,17 +247,17 @@
             { data: 'Professional Role / Title' },
             { data: 'Years of Experience' },
             { data: 'Adaptation Sectors' },
-            { data: 'Adaptation Sub-sectors' },
-            { data: 'Geographic Scope' },
-            { data: 'Type of Expertise' },
-            { data: 'Technical Skills' },
+            { data: 'Adaptation Sub-sectors', render: data => data || '' },
+            { data: 'Geographic Scope', render: data => data || '' },
+            { data: 'Type of Expertise', render: data => data || '' },
+            { data: 'Technical Skills', render: data => data || '' },
             { data: 'Biography' }
           ],
           paging: false,
           scrollCollapse: false,
-          orderCellsTop: true,
           fixedHeader: true,
-          autoWidth: false
+          autoWidth: false,
+          orderCellsTop: true
         });
 
         $('#globalSearch').on('keyup', function () {
