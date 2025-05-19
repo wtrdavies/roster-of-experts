@@ -46,7 +46,7 @@
 
     .button {
       display: inline-block;
-      margin: 20px 0;
+      margin: 20px 0 40px 0;
       padding: 12px 24px;
       font-size: 16px;
       font-weight: 600;
@@ -64,7 +64,7 @@
 
     .table-container {
       max-width: 95%;
-      margin: 40px auto;
+      margin: 0 auto 50px auto;
       background: white;
       padding: 20px;
       border-radius: 8px;
@@ -88,16 +88,20 @@
       box-sizing: border-box;
     }
 
+    .dataTables_filter {
+      display: none !important;
+    }
+
     /* Column widths */
-    td:nth-child(1) { max-width: 180px; }
-    td:nth-child(2) { max-width: 180px; }
-    td:nth-child(3) { max-width: 100px; }
-    td:nth-child(4) { max-width: 200px; }
-    td:nth-child(5) { max-width: 250px; }
-    td:nth-child(6) { max-width: 250px; }
-    td:nth-child(7) { max-width: 220px; }
-    td:nth-child(8) { max-width: 200px; }
-    td:nth-child(9) { max-width: 350px; }
+    td:nth-child(1), th:nth-child(1) { max-width: 160px; }
+    td:nth-child(2), th:nth-child(2) { max-width: 160px; }
+    td:nth-child(3), th:nth-child(3) { max-width: 80px; }
+    td:nth-child(4), th:nth-child(4) { max-width: 180px; }
+    td:nth-child(5), th:nth-child(5) { max-width: 200px; }
+    td:nth-child(6), th:nth-child(6) { max-width: 200px; }
+    td:nth-child(7), th:nth-child(7) { max-width: 180px; }
+    td:nth-child(8), th:nth-child(8) { max-width: 160px; }
+    td:nth-child(9), th:nth-child(9) { max-width: 300px; }
 
     .footer {
       text-align: center;
@@ -127,7 +131,8 @@
       display: flex;
       justify-content: flex-end;
       align-items: center;
-      margin-top: 10px;
+      margin: 10px 0;
+      gap: 10px;
     }
   </style>
 </head>
@@ -199,22 +204,11 @@
   let dataTableInstance;
 
   function clearFilters() {
-    $('#expertTable').DataTable().search('').columns().search('').draw();
-    $('#expertTable thead tr:eq(1) input').val('');
+    dataTableInstance.search('').columns().search('').draw();
     $('#globalSearch').val('');
   }
 
   $(document).ready(function () {
-    $('#expertTable thead tr').clone(true).appendTo('#expertTable thead');
-    $('#expertTable thead tr:eq(1) th').each(function (i) {
-      $(this).html('<input type="text" placeholder="Filter..." />');
-      $('input', this).on('keyup change', function () {
-        if ($('#expertTable').DataTable().column(i).search() !== this.value) {
-          $('#expertTable').DataTable().column(i).search(this.value).draw();
-        }
-      });
-    });
-
     fetch('https://wtrdavies.github.io/roster-of-experts/data/roster.json')
       .then(response => response.json())
       .then(data => {
