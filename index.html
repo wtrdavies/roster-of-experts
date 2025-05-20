@@ -6,6 +6,7 @@
   <title>Lebanon Climate Adaptation Roster of Experts</title>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+
   <style>
     body {
       font-family: 'Open Sans', sans-serif;
@@ -26,23 +27,89 @@
       margin-bottom: 10px;
     }
 
-    .container {
-      max-width: 95%;
+    .content {
+      max-width: 800px;
       margin: 30px auto;
       background: white;
       padding: 30px;
       border-radius: 8px;
       box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
     }
 
-    h1, h2 {
-      margin: 10px 0;
+    .content p {
+      text-align: justify;
+      font-size: 16px;
+      color: #333;
+      line-height: 1.6;
     }
 
-    table.dataTable td {
-      white-space: pre-wrap;
-      word-break: break-word;
+    .button {
+      display: inline-block;
+      margin: 20px 0 40px 0;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: 600;
+      color: white;
+      background: #0F5E28;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    .button:hover {
+      background: #09471E;
+    }
+
+    .table-container {
+      max-width: 95%;
+      margin: 0 auto 50px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      overflow-x: auto; /* Add horizontal scrolling for small screens */
+    }
+
+    /* Major fix: Use table-layout: fixed to enforce column widths */
+    #expertTable {
+      width: 100% !important;
+      table-layout: fixed;
+      border-collapse: collapse;
+    }
+
+    /* Improved cell styling */
+    #expertTable th, 
+    #expertTable td {
+      padding: 8px;
+      font-size: 14px;
+      word-wrap: break-word; /* Important for text wrapping */
+      overflow-wrap: break-word;
       vertical-align: top;
+      border: 1px solid #f0f0f0;
+    }
+
+    /* Column width specifications */
+    #expertTable th:nth-child(1), #expertTable td:nth-child(1) { width: 12%; }
+    #expertTable th:nth-child(2), #expertTable td:nth-child(2) { width: 12%; }
+    #expertTable th:nth-child(3), #expertTable td:nth-child(3) { width: 8%; }
+    #expertTable th:nth-child(4), #expertTable td:nth-child(4) { width: 12%; }
+    #expertTable th:nth-child(5), #expertTable td:nth-child(5) { width: 13%; }
+    #expertTable th:nth-child(6), #expertTable td:nth-child(6) { width: 13%; }
+    #expertTable th:nth-child(7), #expertTable td:nth-child(7) { width: 10%; }
+    #expertTable th:nth-child(8), #expertTable td:nth-child(8) { width: 10%; }
+    #expertTable th:nth-child(9), #expertTable td:nth-child(9) { width: 20%; }
+
+    thead input {
+      width: 100%;
+      padding: 4px;
+      box-sizing: border-box;
+      font-size: 13px;
+    }
+
+    .dataTables_filter {
+      display: none !important;
     }
 
     .footer {
@@ -53,14 +120,28 @@
       margin-top: 50px;
     }
 
-    th, td {
-      padding: 10px;
+    .clear-filters-btn {
+      background-color: #0F5E28;
+      color: white;
+      padding: 8px 16px;
+      font-size: 14px;
+      font-weight: bold;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-left: 10px;
     }
 
-    thead input {
-      width: 100%;
-      padding: 4px;
-      box-sizing: border-box;
+    .clear-filters-btn:hover {
+      background-color: #09471E;
+    }
+
+    .search-container {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin: 10px 0 20px 0;
+      gap: 10px;
     }
   </style>
 </head>
@@ -71,10 +152,40 @@
   <h1>Lebanon Climate Adaptation Roster of Experts</h1>
 </div>
 
-<div class="container">
+<div class="content">
+  <p>
+    Lebanon faces significant climate challenges, requiring locally driven adaptation strategies
+    to protect communities, ecosystems, and key economic sectors. The Lebanon Climate Adaptation
+    Roster of Experts serves as a centralized resource, connecting qualified professionals
+    with organizations, policymakers, and project teams working on climate resilience.
+  </p>
+  <p>
+    By leveraging national expertise in areas such as water management, agriculture,
+    renewable energy, and environmental policy, the roster facilitates
+    rapid mobilization of specialists, enhances capacity-building efforts,
+    and strengthens local ownership of adaptation initiatives.
+  </p>
+  <p>
+    This initiative ensures that adaptation projects in Lebanon benefit from local knowledge,
+    innovative solutions, and targeted technical expertise, driving effective and sustainable
+    climate action.
+  </p>
+
+  <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=vHVmC8ygz0qVTwkqV-oT6iB6ZxZUSz9HuCUg7wfNY5FUM0UxQ085UlpITlVGUE9aT0FRT1I4TTEyRS4u" class="button">
+    Apply to the Roster of Experts
+  </a>
+</div>
+
+<div class="table-container">
   <h2 style="text-align:center;">Public Roster of Experts</h2>
 
-  <table id="expertTable" class="display nowrap" style="width:100%">
+  <div class="search-container">
+    <label for="globalSearch">Search:</label>
+    <input type="text" id="globalSearch" placeholder="Search table..." />
+    <button class="clear-filters-btn" onclick="clearFilters()">Clear Filters</button>
+  </div>
+
+  <table id="expertTable" class="display">
     <thead>
       <tr>
         <th>Expert Name / Email</th>
@@ -99,8 +210,15 @@
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 <script>
+  let dataTableInstance;
+
+  function clearFilters() {
+    $('#globalSearch').val('');
+    $('#expertTable thead tr:eq(1) input').val('');
+    dataTableInstance.search('').columns().search('').draw();
+  }
+
   $(document).ready(function () {
-    // Add search inputs to each column
     $('#expertTable thead tr').clone(true).appendTo('#expertTable thead');
     $('#expertTable thead tr:eq(1) th').each(function (i) {
       $(this).html('<input type="text" placeholder="Filter..." />');
@@ -114,25 +232,52 @@
     fetch('https://wtrdavies.github.io/roster-of-experts/data/roster.json')
       .then(response => response.json())
       .then(data => {
-        $('#expertTable').DataTable({
+        // Insert <br> for specific multi-value fields
+        const multilineFields = [
+          'Adaptation Sub-sectors',
+          'Geographic Scope',
+          'Type of Expertise',
+          'Technical Skills'
+        ];
+        multilineFields.forEach(key => {
+          data.forEach(item => {
+            if (item[key]) {
+              item[key] = item[key].replace(/;\s*/g, "<br>");
+            }
+          });
+        });
+
+        dataTableInstance = $('#expertTable').DataTable({
           data: data,
           columns: [
             { data: 'Expert Name / Email' },
             { data: 'Professional Role / Title' },
             { data: 'Years of Experience' },
             { data: 'Adaptation Sectors' },
-            { data: 'Adaptation Sub-sectors' },
-            { data: 'Geographic Scope' },
-            { data: 'Type of Expertise' },
-            { data: 'Technical Skills' },
+            { data: 'Adaptation Sub-sectors', render: data => data || '' },
+            { data: 'Geographic Scope', render: data => data || '' },
+            { data: 'Type of Expertise', render: data => data || '' },
+            { data: 'Technical Skills', render: data => data || '' },
             { data: 'Biography' }
           ],
           paging: false,
-          scrollCollapse: true,
-          orderCellsTop: true,
-          fixedHeader: true,
-          scrollX: true,
-          autoWidth: false
+          scrollX: true,             // Enable horizontal scrolling if needed
+          autoWidth: false,          // Disable auto column width calculation
+          orderCellsTop: true,       // Sorting controls in top row
+          columnDefs: [              // Extra column definitions
+            { 
+              targets: '_all',       // Apply to all columns
+              className: 'dt-body-wrap' // Add class for text wrapping
+            }
+          ],
+          initComplete: function() {
+            // Apply additional styling after table initialization
+            $(this).find('td, th').css('white-space', 'normal');
+          }
+        });
+
+        $('#globalSearch').on('keyup', function () {
+          dataTableInstance.search(this.value).draw();
         });
       });
   });
