@@ -90,16 +90,26 @@
       border: 1px solid #f0f0f0;
     }
 
-    /* Column width specifications */
-    #expertTable th:nth-child(1), #expertTable td:nth-child(1) { width: 12%; }
-    #expertTable th:nth-child(2), #expertTable td:nth-child(2) { width: 12%; }
-    #expertTable th:nth-child(3), #expertTable td:nth-child(3) { width: 8%; }
+    /* Updated column width specifications - make first 3 columns narrower */
+    #expertTable th:nth-child(1), #expertTable td:nth-child(1) { width: 10%; }
+    #expertTable th:nth-child(2), #expertTable td:nth-child(2) { width: 10%; }
+    #expertTable th:nth-child(3), #expertTable td:nth-child(3) { width: 6%; }
     #expertTable th:nth-child(4), #expertTable td:nth-child(4) { width: 12%; }
-    #expertTable th:nth-child(5), #expertTable td:nth-child(5) { width: 13%; }
-    #expertTable th:nth-child(6), #expertTable td:nth-child(6) { width: 13%; }
-    #expertTable th:nth-child(7), #expertTable td:nth-child(7) { width: 10%; }
-    #expertTable th:nth-child(8), #expertTable td:nth-child(8) { width: 10%; }
+    #expertTable th:nth-child(5), #expertTable td:nth-child(5) { width: 14%; }
+    #expertTable th:nth-child(6), #expertTable td:nth-child(6) { width: 14%; }
+    #expertTable th:nth-child(7), #expertTable td:nth-child(7) { width: 12%; }
+    #expertTable th:nth-child(8), #expertTable td:nth-child(8) { width: 12%; }
     #expertTable th:nth-child(9), #expertTable td:nth-child(9) { width: 20%; }
+
+    /* Add link styling */
+    #expertTable td a {
+      color: #0F5E28;
+      text-decoration: none;
+    }
+    
+    #expertTable td a:hover {
+      text-decoration: underline;
+    }
 
     thead input {
       width: 100%;
@@ -171,13 +181,13 @@
     climate action.
   </p>
 
-  <a href="https://docs.google.com/forms/d/e/1FAIpQLSeFrcHhA8nWv4e6QNpmuHpUDD3LcXFgC8ASht3cUD9PHE8Y5Q/viewform" class="button">
+  <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=vHVmC8ygz0qVTwkqV-oT6iB6ZxZUSz9HuCUg7wfNY5FUM0UxQ085UlpITlVGUE9aT0FRT1I4TTEyRS4u" class="button">
     Apply to the Roster of Experts
   </a>
 </div>
 
 <div class="table-container">
-  <h2 style="text-align:center;">Roster of Experts for Lebanon Climate Adaptation</h2>
+  <h2 style="text-align:center;">Public Roster of Experts</h2>
 
   <div class="search-container">
     <label for="globalSearch">Search:</label>
@@ -232,15 +242,33 @@
     fetch('https://wtrdavies.github.io/roster-of-experts/data/roster.json')
       .then(response => response.json())
       .then(data => {
-        // Insert <br> for specific multi-value fields
-        const multilineFields = [
-          'Adaptation Sub-sectors',
-          'Geographic Scope',
-          'Type of Expertise',
-          'Technical Skills'
-        ];
-        multilineFields.forEach(key => {
-          data.forEach(item => {
+        // Process data to add hyperlinks and handle formatting
+        data.forEach(item => {
+          // Extract email from the name/email field if it exists
+          const nameEmailField = item['Expert Name / Email'];
+          
+          // Check if the field contains an email in parentheses
+          if (nameEmailField.includes('(') && nameEmailField.includes(')')) {
+            // Extract name and email
+            const namePart = nameEmailField.substring(0, nameEmailField.indexOf('(')).trim();
+            const emailPart = nameEmailField.substring(
+              nameEmailField.indexOf('(') + 1, 
+              nameEmailField.indexOf(')')
+            ).trim();
+            
+            // Replace the original field with a hyperlinked version
+            item['Expert Name / Email'] = `<a href="mailto:${emailPart}">${namePart}</a>`;
+          }
+          
+          // Format multi-value fields with line breaks
+          const multilineFields = [
+            'Adaptation Sub-sectors',
+            'Geographic Scope',
+            'Type of Expertise',
+            'Technical Skills'
+          ];
+          
+          multilineFields.forEach(key => {
             if (item[key]) {
               item[key] = item[key].replace(/;\s*/g, "<br>");
             }
@@ -250,7 +278,10 @@
         dataTableInstance = $('#expertTable').DataTable({
           data: data,
           columns: [
-            { data: 'Expert Name / Email' },
+            { 
+              data: 'Expert Name / Email', 
+              render: data => data || '' 
+            },
             { data: 'Professional Role / Title' },
             { data: 'Years of Experience' },
             { data: 'Adaptation Sectors' },
@@ -268,6 +299,13 @@
             { 
               targets: '_all',       // Apply to all columns
               className: 'dt-body-wrap' // Add class for text wrapping
+            },
+            {
+              targets: 0,            // First column (Name/Email)
+              render: function(data, type, row) {
+                return type === 'display' && data.indexOf('<a') === -1 ? 
+                  '<span>' + data + '</span>' : data;
+              }
             }
           ],
           initComplete: function() {
