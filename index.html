@@ -69,20 +69,37 @@
       padding: 20px;
       border-radius: 8px;
       box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      overflow-x: auto; /* Add horizontal scrolling for small screens */
     }
 
-    table.dataTable {
+    /* Major fix: Use table-layout: fixed to enforce column widths */
+    #expertTable {
       width: 100% !important;
       table-layout: fixed;
+      border-collapse: collapse;
     }
 
-    td, th {
-      word-break: break-word;
-      white-space: normal;
-      vertical-align: top;
+    /* Improved cell styling */
+    #expertTable th, 
+    #expertTable td {
       padding: 8px;
       font-size: 14px;
+      word-wrap: break-word; /* Important for text wrapping */
+      overflow-wrap: break-word;
+      vertical-align: top;
+      border: 1px solid #f0f0f0;
     }
+
+    /* Column width specifications */
+    #expertTable th:nth-child(1), #expertTable td:nth-child(1) { width: 12%; }
+    #expertTable th:nth-child(2), #expertTable td:nth-child(2) { width: 12%; }
+    #expertTable th:nth-child(3), #expertTable td:nth-child(3) { width: 8%; }
+    #expertTable th:nth-child(4), #expertTable td:nth-child(4) { width: 12%; }
+    #expertTable th:nth-child(5), #expertTable td:nth-child(5) { width: 13%; }
+    #expertTable th:nth-child(6), #expertTable td:nth-child(6) { width: 13%; }
+    #expertTable th:nth-child(7), #expertTable td:nth-child(7) { width: 10%; }
+    #expertTable th:nth-child(8), #expertTable td:nth-child(8) { width: 10%; }
+    #expertTable th:nth-child(9), #expertTable td:nth-child(9) { width: 20%; }
 
     thead input {
       width: 100%;
@@ -90,16 +107,6 @@
       box-sizing: border-box;
       font-size: 13px;
     }
-
-    td:nth-child(1) { width: 12%; }
-    td:nth-child(2) { width: 12%; }
-    td:nth-child(3) { width: 8%; }
-    td:nth-child(4) { width: 12%; }
-    td:nth-child(5) { width: 13%; }
-    td:nth-child(6) { width: 13%; }
-    td:nth-child(7) { width: 10%; }
-    td:nth-child(8) { width: 10%; }
-    td:nth-child(9) { width: 20%; }
 
     .dataTables_filter {
       display: none !important;
@@ -178,7 +185,7 @@
     <button class="clear-filters-btn" onclick="clearFilters()">Clear Filters</button>
   </div>
 
-  <table id="expertTable" class="display nowrap">
+  <table id="expertTable" class="display">
     <thead>
       <tr>
         <th>Expert Name / Email</th>
@@ -254,10 +261,19 @@
             { data: 'Biography' }
           ],
           paging: false,
-          scrollCollapse: false,
-          fixedHeader: true,
-          autoWidth: false,
-          orderCellsTop: true
+          scrollX: true,             // Enable horizontal scrolling if needed
+          autoWidth: false,          // Disable auto column width calculation
+          orderCellsTop: true,       // Sorting controls in top row
+          columnDefs: [              // Extra column definitions
+            { 
+              targets: '_all',       // Apply to all columns
+              className: 'dt-body-wrap' // Add class for text wrapping
+            }
+          ],
+          initComplete: function() {
+            // Apply additional styling after table initialization
+            $(this).find('td, th').css('white-space', 'normal');
+          }
         });
 
         $('#globalSearch').on('keyup', function () {
