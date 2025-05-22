@@ -111,20 +111,21 @@
       text-decoration: underline;
     }
 
-    /* Fix filter alignment - stronger rules */
-    #expertTable thead input {
-      width: 100% !important;
-      padding: 4px !important;
-      box-sizing: border-box !important;
-      font-size: 13px !important;
-      margin: 0 !important;
-      border: 1px solid #ddd !important;
-      display: block !important;
+    /* Fix filter alignment - more specific targeting */
+    table.dataTable thead tr:nth-child(2) th {
+      padding: 2px !important;
+      vertical-align: top !important;
     }
 
-    #expertTable thead tr:nth-child(2) th {
+    table.dataTable thead tr:nth-child(2) th input[type="text"] {
+      width: calc(100% - 8px) !important;
       padding: 4px !important;
-      vertical-align: top !important;
+      box-sizing: border-box !important;
+      font-size: 12px !important;
+      margin: 2px !important;
+      border: 1px solid #ccc !important;
+      display: block !important;
+      height: 24px !important;
     }
 
     .dataTables_filter {
